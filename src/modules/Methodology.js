@@ -8,9 +8,7 @@ const Methodology = ({content}) => {
     if (window.innerWidth > 500) {
         return (
             <div>
-                <Container textAlign='left'>
-                </Container>
-                <Container textAlign='center'>
+                <Container textAlign='center' style={style.methodologyContainer}>
                     <h2>Methodologies:</h2>
                     <WordCloud
                         data={wordCloudMap(content)}
@@ -35,6 +33,12 @@ const Methodology = ({content}) => {
 }
 
 export default Methodology;
+
+const style = {
+    methodologyContainer: {
+        paddingTop: '50px'
+    }
+}
 
 const fontSizeMapper = (word) => Math.log2(word.value) * 5;
 const rotate = word => word.value % 20;

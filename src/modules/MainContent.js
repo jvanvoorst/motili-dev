@@ -1,11 +1,13 @@
 import React from 'react';
 
 import Methodology from './Methodology';
+import Specs from './Specs';
 
 const MainContent = ({job}) =>
     <div style={style.mainContent}>
         <div>
-            <Methodology content={job.methodology}/>
+            <Methodology content={job.methodology} />
+            <Specs content={job.specs} />
         </div>
     </div>;
 
