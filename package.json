@@ -20,6 +20,7 @@
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
+    "react-d3-cloud": "^0.4.1",
     "react-dom": "^15.5.4",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.2"

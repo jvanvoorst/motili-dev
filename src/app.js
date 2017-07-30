@@ -17,7 +17,7 @@ class App extends Component {
                     essentials={job.essentials}
                 />
                 <MainContent
-                
+                    job={job}
                 />
             </div>
         );
