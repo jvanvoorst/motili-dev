@@ -1,15 +1,17 @@
 import React from 'react';
 
 import WordCloud from 'react-d3-cloud';
-import MethodologyMobile from './MethodologyMobile';
-import { Container } from 'semantic-ui-react';
+import { Container, List } from 'semantic-ui-react';
+import { header2 } from '../style/commonStyle';
 
 const Methodology = ({content}) => {
     if (window.innerWidth > 500) {
         return (
             <div>
-                <Container textAlign='center' style={style.methodologyContainer}>
-                    <h2>Methodologies:</h2>
+                <Container style={style.methodologyContainer}>
+                    <h2 style={header2}>Methodologies</h2>
+                </Container>
+                <Container textAlign='center'>
                     <WordCloud
                         data={wordCloudMap(content)}
                         fontSizeMapper={fontSizeMapper}
@@ -24,9 +26,7 @@ const Methodology = ({content}) => {
         return (
             <div>
                 <h2>Methodologies:</h2>
-                <MethodologyMobile
-                    data={methodologyMap(content)}
-                />
+                <List items={methodologyMap(content)} />
             </div>
         );
     }
@@ -36,13 +36,15 @@ export default Methodology;
 
 const style = {
     methodologyContainer: {
-        paddingTop: '50px'
+        paddingTop: '50px',
     }
 }
 
+// functions for WordCloud component
 const fontSizeMapper = (word) => Math.log2(word.value) * 5;
 const rotate = word => word.value % 20;
 
+// create array for WordCloud component
 const wordCloudMap = (data) =>
     Object.entries(data).reduce((acc, [key, value]) => {
         if (value === true) {
@@ -53,6 +55,7 @@ const wordCloudMap = (data) =>
         return acc;
     }, []);
 
+// create array for MethodologyMobile component
 const methodologyMap = (data) =>
     Object.entries(data).reduce((acc, [key, value]) => {
         if (value === true) {

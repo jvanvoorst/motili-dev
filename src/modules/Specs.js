@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { Container, List } from 'semantic-ui-react';
+import { header2 } from '../style/commonStyle';
 
 const Specs = ({content}) =>
     <div>
-        <Container textAlign='center'>
-            <h2>Specs:</h2>
-        </Container>
         <Container textAlign='left'>
+            <h2 style={header2}>Specs</h2>
+        </Container>
+        <Container textAlign='center'>
             <List horizontal>
                 {Object.entries(content).map(([key, value]) => {
                     if (typeof value !== 'object') {
