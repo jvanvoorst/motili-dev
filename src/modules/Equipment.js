@@ -9,7 +9,7 @@ const Equipment = ({content}) =>
         <Container textAlign='left'>
             <h2 style={header2}>Equipment</h2>
         </Container>
-        <Container>
+        <Container textAlign='center'>
             <InlineList content={mapEquipment(content)} />
         </Container>
     </div>;
