@@ -2,14 +2,14 @@ import React from 'react';
 
 import WordCloud from 'react-d3-cloud';
 import { Container, List } from 'semantic-ui-react';
-import { header2 } from '../style/commonStyle';
+import cStyle from '../style/commonStyle';
 
 const Methodology = ({content}) => {
     if (window.innerWidth > 500) {
         return (
             <div>
-                <Container style={style.methodologyContainer}>
-                    <h2 style={header2}>Methodologies</h2>
+                <Container style={cStyle.topContainer}>
+                    <h2 style={cStyle.header2}>Methodology</h2>
                 </Container>
                 <Container textAlign='center'>
                     <WordCloud
@@ -33,12 +33,6 @@ const Methodology = ({content}) => {
 }
 
 export default Methodology;
-
-const style = {
-    methodologyContainer: {
-        paddingTop: '50px',
-    }
-}
 
 // functions for WordCloud component
 const fontSizeMapper = (word) => Math.log2(word.value) * 5;

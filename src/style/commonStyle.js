@@ -1,6 +1,11 @@
-const header2 = {
-    fontWeight: '400',
-    display: 'inline-block'
+const cStyle = {
+    header2: {
+        fontWeight: '400',
+        display: 'inline-block'
+    },
+    topContainer: {
+        paddingTop: '50px'
+    }
 };
 
-export { header2 };
+export default cStyle;

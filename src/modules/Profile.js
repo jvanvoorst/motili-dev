@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Container } from 'semantic-ui-react';
-import { header2 } from '../style/commonStyle';
+import cStyle from '../style/commonStyle';
 
 const Profile = ({content}) =>
     <div>
-        <Container textAlign='left'>
-            <h2 style={header2}>Profile</h2>
+        <Container textAlign='left' style={cStyle.topContainer}>
+            <h2 style={cStyle.header2}>Profile</h2>
         </Container>
         <Container>
             {Object.entries(content).map(([key, value]) =>

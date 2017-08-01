@@ -1,18 +1,11 @@
 import React from 'react';
 
 import { Container, List } from 'semantic-ui-react';
-import { header2 } from '../style/commonStyle';
-import InlineList from './InlineList';
+import cStyle from '../style/commonStyle';
+import { ContentList } from './InlineList';
 
 const Specs = ({content}) =>
-    <div>
-        <Container textAlign='left'>
-            <h2 style={header2}>Specs</h2>
-        </Container>
-        <Container textAlign='center'>
-            <InlineList content={mapSpecs(content)} />
-        </Container>
-    </div>;
+    <ContentList content={mapSpecs(content)}>Specs</ContentList>;
 
 export default Specs;
 
