@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Container, Button, List } from 'semantic-ui-react';
 import cStyle from '../style/commonStyle';
+import job from '../data/job';
+import { InlineList } from './InlineList';
 
 class Technologies extends Component {
 
@@ -33,62 +35,33 @@ class Technologies extends Component {
                         activeTech={this.state.activeTech}
                     />
                 </Container>
-                <Container textAlign='center'>
-                    <TechnologiesDisplay
-                        content={this.state.selectedTech}
-                    />
+                <Container textAlign='left'>
+                    <InlineList content={mapTechnologiesString(this.state.selectedTech)} />
+                    <List>
+                        <List.Item>
+                            <List.Content>
+                                <List.Header style={cStyle.subContent}>testing (oneof)</List.Header>
+                                <List.Description>
+                                    <InlineList content={Object.entries(this.state.selectedTech.testing.oneof)} />
+                                </List.Description>
+                            </List.Content>
+                        </List.Item>
+                    </List>
+                    <List>
+                        <List.Item>
+                            <List.Content>
+                                <List.Header style={cStyle.subContent}>framework (oneof)</List.Header>
+                                <List.Description>
+                                    <InlineList content={Object.entries(this.state.selectedTech.framework.oneof)} />
+                                </List.Description>
+                            </List.Content>
+                        </List.Item>
+                    </List>
                 </Container>
             </div>
         );
     }
 }
-
-
-const TechnologiesDisplay = ({content}) =>
-    <div>
-    <List horizontal size='large'>
-        {Object.entries(content).map(([key, value]) => {
-            if (typeof value !== 'object') {
-                return (
-                    <List.Item key={key}>
-                        <List.Content>
-                            <List.Header>{key}</List.Header>
-                            <List.Description>{value}</List.Description>
-                        </List.Content>
-                    </List.Item>
-                );
-            }
-        })}
-    </List>
-    <br></br>
-    <List horizontal size='large'>
-        {Object.entries(content).map(([key, value]) => {
-            if (typeof value === 'object') {
-                return (
-                    <List.Item key={key}>
-                        <List.Content>
-                            <List.Header>{key} (oneof)</List.Header>
-                            <List.Content>
-                                <List.List>
-                                    {Object.entries(value.oneof).map(([subKey, subValue]) =>
-                                        <List.Item key={subKey}>
-                                            <List.Content>
-                                                <List.Header>{subKey}</List.Header>
-                                                <List.Description>{subValue}</List.Description>
-                                            </List.Content>
-                                        </List.Item>
-                                    )}
-                                </List.List>
-
-                            </List.Content>
-
-                        </List.Content>
-                    </List.Item>
-                );
-            }
-        })}
-    </List>
-</div>
 
 const TechSelectButton = ({onSelect, activeTech}) =>
     <Button.Group floated='right'>
@@ -105,5 +78,8 @@ const TechSelectButton = ({onSelect, activeTech}) =>
             Seasoned
         </Button>
     </Button.Group>;
+
+const mapTechnologiesString = (data) =>
+    Object.entries(data).filter(([key, value]) => typeof value !== 'object')
 
 export default Technologies;

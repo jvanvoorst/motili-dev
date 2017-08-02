@@ -5,6 +5,9 @@ const cStyle = {
     },
     topContainer: {
         paddingTop: '50px'
+    },
+    subContent: {
+        paddingLeft: '180px'
     }
 };
 

@@ -3,10 +3,11 @@ import React from 'react';
 import WordCloud from 'react-d3-cloud';
 import { Container, List } from 'semantic-ui-react';
 import cStyle from '../style/commonStyle';
+import { Default, Mobile } from './Responsive';
 
-const Methodology = ({content}) => {
-    if (window.innerWidth > 500) {
-        return (
+const Methodology = ({content}) =>
+    <div>
+        <Default>
             <div>
                 <Container style={cStyle.topContainer}>
                     <h2 style={cStyle.header2}>Methodology</h2>
@@ -21,16 +22,14 @@ const Methodology = ({content}) => {
                     />
                 </Container>
             </div>
-        );
-    } else {
-        return (
+        </Default>
+        <Mobile>
             <div>
                 <h2>Methodologies:</h2>
                 <List items={methodologyMap(content)} />
             </div>
-        );
-    }
-}
+        </Mobile>
+    </div>
 
 export default Methodology;
 
@@ -42,7 +41,7 @@ const rotate = word => word.value % 20;
 const wordCloudMap = (data) =>
     Object.entries(data).reduce((acc, [key, value]) => {
         if (value === true) {
-            acc.push({text: key, value: Math.floor((Math.random() * 100) + 1)});
+            acc.push({text: key, value: Math.floor((Math.random() * 100) + 5)});
         } else {
             acc.push({text: `${key}: ${value}`, value: Math.floor((Math.random() * 100) + 1)});
         }

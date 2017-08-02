@@ -10,7 +10,7 @@ const Profile = ({content}) =>
         </Container>
         <Container>
             {Object.entries(content).map(([key, value]) =>
-                <div key={key}>
+                <div key={key} style={cStyle.subContent}>
                     <span>{key}</span>
                     <div style={calcBar(value)}></div>
                 </div>
