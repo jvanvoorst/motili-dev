@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Methodology from './Methodology';
 import Specs from './Specs';
@@ -21,10 +22,15 @@ const MainContent = ({job}) =>
         <Misc content={job.misc} />
     </div>;
 
-export default MainContent;
+MainContent.propTypes = {
+    job: PropTypes.object.isRequired
+};
 
 const style = {
     mainContent: {
-        backgroundColor: '#F7F7F7'
+        backgroundColor: '#F7F7F7',
+        paddingBottom: '50px'
     }
 };
+
+export default MainContent;

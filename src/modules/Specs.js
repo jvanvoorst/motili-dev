@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Container, List } from 'semantic-ui-react';
-import cStyle from '../style/commonStyle';
 import { ContentList } from './InlineList';
 
 const Specs = ({content}) =>
     <ContentList content={mapSpecs(content)}>Specs</ContentList>;
 
-export default Specs;
+Specs.propTypes = {
+    content: PropTypes.object.isRequired
+};
 
 const mapSpecs = (data) =>
     Object.entries(data).reduce((acc, [key, value]) => {
@@ -18,3 +19,5 @@ const mapSpecs = (data) =>
         }
         return acc;
     }, []);
+
+export default Specs;

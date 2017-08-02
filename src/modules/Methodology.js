@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import WordCloud from 'react-d3-cloud';
-import { Container, List } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import cStyle from '../style/commonStyle';
 import { Default, Mobile } from './Responsive';
+import { ContentList } from './InlineList';
 
 const Methodology = ({content}) =>
     <div>
@@ -24,18 +26,16 @@ const Methodology = ({content}) =>
             </div>
         </Default>
         <Mobile>
-            <div>
-                <h2>Methodologies:</h2>
-                <List items={methodologyMap(content)} />
-            </div>
+            <ContentList content={methodologyMap(content)}>Methodologies</ContentList>
         </Mobile>
-    </div>
+    </div>;
 
-export default Methodology;
+Methodology.propTypes = {
+    content: PropTypes.object.isRequired
+};
 
-// functions for WordCloud component
+// function to randomize font size in WordCloud component
 const fontSizeMapper = (word) => Math.log2(word.value) * 5;
-const rotate = word => word.value % 20;
 
 // create array for WordCloud component
 const wordCloudMap = (data) =>
@@ -48,13 +48,15 @@ const wordCloudMap = (data) =>
         return acc;
     }, []);
 
-// create array for MethodologyMobile component
+// create array  of arrays for ContentList component
 const methodologyMap = (data) =>
     Object.entries(data).reduce((acc, [key, value]) => {
         if (value === true) {
-            acc.push(key);
+            acc.push(['', key]);
         } else {
-            acc.push(`${key}: ${value}`);
+            acc.push(['', `${key}: ${value}`]);
         }
         return acc;
     }, []);
+
+export default Methodology;

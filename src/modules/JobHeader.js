@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Header } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import EssentialsAccordion from './EssentialsAccordion';
 
 const JobHeader = ({headline, essentials}) =>
@@ -12,7 +12,10 @@ const JobHeader = ({headline, essentials}) =>
         </Container>
     </div>;
 
-export default JobHeader
+JobHeader.propTypes = {
+    headline: PropTypes.string.isRequired,
+    essentials: PropTypes.object.isRequired
+};
 
 const style =  {
     headerText: {
@@ -28,3 +31,5 @@ const style =  {
         borderBottomStyle: 'solid'
     }
 };
+
+export default JobHeader;

@@ -7,7 +7,7 @@ const cStyle = {
         paddingTop: '50px'
     },
     subContent: {
-        paddingLeft: '180px'
+        paddingLeft: '15%'
     }
 };
 

@@ -1,27 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import job from './data/job';
-import { Header, Container } from 'semantic-ui-react';
-import JobHeader from './modules/JobHeader';
 import CompanyLogo from './modules/CompanyLogo';
+import JobHeader from './modules/JobHeader';
 import MainContent from './modules/mainContent';
 
-class App extends Component {
-
-    render() {
-        return (
-            <div>
-                <CompanyLogo />
-                <JobHeader
-                    headline={job.headline}
-                    essentials={job.essentials}
-                />
-                <MainContent
-                    job={job}
-                />
-            </div>
-        );
-    }
-}
+const App = () =>
+    <div>
+        <CompanyLogo />
+        <JobHeader
+            headline={job.headline}
+            essentials={job.essentials}
+        />
+        <MainContent
+            job={job}
+        />
+    </div>;
 
 export default App;

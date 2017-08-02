@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Container, Button, List } from 'semantic-ui-react';
 import cStyle from '../style/commonStyle';
-import job from '../data/job';
 import { InlineList } from './InlineList';
 
 class Technologies extends Component {
@@ -22,7 +22,7 @@ class Technologies extends Component {
         this.setState({
             selectedTech: this.props.content[selection],
             activeTech: selection
-        })
+        });
     }
 
     render() {
@@ -35,7 +35,7 @@ class Technologies extends Component {
                         activeTech={this.state.activeTech}
                     />
                 </Container>
-                <Container textAlign='left'>
+                <Container>
                     <InlineList content={mapTechnologiesString(this.state.selectedTech)} />
                     <List>
                         <List.Item>
@@ -63,6 +63,10 @@ class Technologies extends Component {
     }
 }
 
+Technologies.propTypes = {
+    content: PropTypes.object.isRequired
+};
+
 const TechSelectButton = ({onSelect, activeTech}) =>
     <Button.Group floated='right'>
         <Button
@@ -79,7 +83,12 @@ const TechSelectButton = ({onSelect, activeTech}) =>
         </Button>
     </Button.Group>;
 
+TechSelectButton.propTypes = {
+    onSelect: PropTypes.func.isRequired,
+    activeTech: PropTypes.string.isRequired
+};
+
 const mapTechnologiesString = (data) =>
-    Object.entries(data).filter(([key, value]) => typeof value !== 'object')
+    Object.entries(data).filter(([key, value]) => typeof value !== 'object');
 
 export default Technologies;

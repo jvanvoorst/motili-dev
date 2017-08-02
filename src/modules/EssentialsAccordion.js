@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Accordion, Icon, List } from 'semantic-ui-react';
+import { Accordion, Icon } from 'semantic-ui-react';
 import { toCapitalCase, formatDate } from '../helpers/helperFuncs';
 import { InlineList } from './InlineList';
 import cStyle from '../style/commonStyle';
-
-const list = ['one', 'two', 'three'];
 
 const EssentialsAccordion = ({content}) =>
     <Accordion>
@@ -16,13 +14,11 @@ const EssentialsAccordion = ({content}) =>
         <Accordion.Content>
             <InlineList content={mapEssentials(content)} />
         </Accordion.Content>
-    </Accordion>
+    </Accordion>;
 
 EssentialsAccordion.propTypes = {
     content: PropTypes.object.isRequired
 };
-
-export default EssentialsAccordion;
 
 const mapEssentials = (data) =>
     Object.entries(data).reduce((acc, [key, value]) => {
@@ -37,3 +33,5 @@ const mapEssentials = (data) =>
         }
         return acc;
     }, []);
+
+export default EssentialsAccordion;

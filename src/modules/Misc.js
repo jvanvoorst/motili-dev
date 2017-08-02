@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ContentList } from './InlineList';
 
 const Misc = ({content}) =>
     <ContentList content={mapMisc(content)}>Misc</ContentList>;
 
-export default Misc;
+Misc.propTypes = {
+    content: PropTypes.object.isRequired
+};
 
 const mapMisc = (data) =>
     Object.entries(data).filter(([key, value]) => value).reduce((acc, [key, value]) => {
@@ -18,3 +21,5 @@ const mapMisc = (data) =>
         }
         return acc;
     },[]);
+
+export default Misc;
